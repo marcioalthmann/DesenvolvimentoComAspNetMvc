@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="77314496613b4fd68576427e72760da6" Name="Diagram1">
+        <EntityTypeShape EntityType="CadeMeuMedicoBDModel.Cidade" Width="1.5" PointX="2.875" PointY="13.75" />
+        <EntityTypeShape EntityType="CadeMeuMedicoBDModel.Especialidade" Width="1.5" PointX="2.875" PointY="11.875" />
+        <EntityTypeShape EntityType="CadeMeuMedicoBDModel.Medico" Width="1.5" PointX="5" PointY="11.875" />
+        <EntityTypeShape EntityType="CadeMeuMedicoBDModel.Usuario" Width="1.5" PointX="7.125" PointY="11.875" />
+        <AssociationConnector Association="CadeMeuMedicoBDModel.fk_medicos_cidades" />
+        <AssociationConnector Association="CadeMeuMedicoBDModel.fk_medicos_especialidades" />
+        <EntityTypeShape EntityType="CadeMeuMedicoBDModel.BannersPublicitario" Width="1.5" PointX="8.5859244263665389" PointY="5.6414628800197795" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

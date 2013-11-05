@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cade meu medico? - @ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/bootstrap/bootstrap.min.css")" rel="stylesheet" />
+    <style>
+        body {
+            padding-top: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    Cade meu medico? - Área Administrativa
+                </a>
+            </div>
+            <div class="collpse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li id="menuMedicos">
+                        
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="jumbotron">
+            <div class="container">
+            <h1>Quem é você?</h1>
+            <p>&nbsp;</p>
+            <div id="status" class="alert alert-info"></div>
+            <p>&nbsp;</p>
+            <div>
+                <form id="form-login" name="form-login" method="get" action="javascript:function()">
+                    <label for="txtLogin">Login</label>&nbsp;
+                    <input type="text" id="txtLogin" name="txtLogin" />
+                    &nbsp;
+                    <label for="txtSenha">Senha</label>&nbsp;
+                    <input type="password" id="txtSenha" name="txtSenha" />&nbsp;
+                    <a id="botao-entrar" class="btn btn-primary btn-lg">
+                        Entrar
+                    </a>
+                </form>
+            </div>
+            </div>
+        </div>
+        <p style="text-align:center;">
+            @Html.ActionLink("Esqueceu sua senha?", "EsqueceuSuaSenha", "Home", null, new { @style = "text-align: center;" })
+        </p>
+    </div>
+
+    <script src="@Url.Content("~/Scripts/jquery-2.0.2.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/Login.Home.js")"></script>
+</body>
+</html>

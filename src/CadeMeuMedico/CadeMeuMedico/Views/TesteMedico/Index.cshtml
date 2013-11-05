@@ -1,0 +1,93 @@
+﻿@model IEnumerable<CadeMeuMedico.Models.Medico>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDMedico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CRM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bairro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AtendePorConvenio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TemClinica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WebsiteBlog)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cidade.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Especialidade.Nome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDMedico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CRM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Endereco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bairro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AtendePorConvenio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TemClinica)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WebsiteBlog)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cidade.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Especialidade.Nome)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

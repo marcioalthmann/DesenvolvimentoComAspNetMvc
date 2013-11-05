@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Encontre seu médico</h2>
+
+<div class="row">
+    <form class="form-inline">
+        <div class="form-group">
+            <label>Cidade</label>
+            @Html.DropDownList("Cidades")
+        </div>
+        <div class="form-group">
+            <label>Especialidade</label>
+            @Html.DropDownList("Especialidades")
+        </div>
+        <button type="button" id="pesquisar" class="btn btn-primary">Pesquisar</button>
+    </form>
+</div>
+<div class="row">
+    <div id="resultados"></div>
+    @*<ul id="resultados"><ul>*@
+</div>
+
+
+@section Scripts{
+    <script>
+        $(function () {
+
+            $("#menuHome").addClass("active");
+            
+            $("#pesquisar").on("click", function() {
+                var pesquisa = { idCidade: $("#Cidades").val(), idEspecialidade: $("#Especialidades").val() };
+
+                $.getJSON("/home/pesquisar", pesquisa, function(data) {
+
+                    var resultados = $("#resultados");
+
+                    resultados.empty();
+
+                    if (data.length == 0) {
+                        resultados.append('<div class="alert alert-danger">Nenhum médico encontrado :(</div>');
+                        return false;
+                    }
+
+                    for (var i = 0; i < data.length; i++) {
+                        resultados.append('<div class="col-sm-6 col-md-4"><div class="thumbnail"><div class="caption"><h3>' + data[i].Nome + '</h3><p>CRM: '+ data[i].Crm +'</p></div><div></div>');
+                    }
+
+                });
+                return false;
+            });
+        });
+    </script>
+}
+

@@ -1,0 +1,37 @@
+﻿@model CadeMeuMedico.Models.Especialidade
+
+@{
+    ViewBag.Title = "Adicionar";
+}
+
+<h2>Adicionar Especialidade</h2>
+
+@using (Html.BeginForm("Adicionar", "Especialidades", FormMethod.Post, new{@class = "form-horizontal"})) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Dados da especialidade</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nome)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Nome, new{@class="form-control"})
+            @Html.ValidationMessageFor(model => model.Nome)
+        </div>
+        <br />
+        <p>
+            <input type="submit" value="Gravar" class="btn btn-primary" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    <script>
+        $("#menuEspecialidades").addClass("active");
+    </script>
+}
+
+
+

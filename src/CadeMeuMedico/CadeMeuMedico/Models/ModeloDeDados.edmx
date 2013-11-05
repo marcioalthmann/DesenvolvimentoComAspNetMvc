@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CadeMeuMedicoBDModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="CadeMeuMedicoBDModelStoreContainer">
+          <EntitySet Name="BannersPublicitarios" EntityType="CadeMeuMedicoBDModel.Store.BannersPublicitarios" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Cidades" EntityType="CadeMeuMedicoBDModel.Store.Cidades" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Especialidades" EntityType="CadeMeuMedicoBDModel.Store.Especialidades" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Medicos" EntityType="CadeMeuMedicoBDModel.Store.Medicos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Usuarios" EntityType="CadeMeuMedicoBDModel.Store.Usuarios" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="fk_medicos_cidades" Association="CadeMeuMedicoBDModel.Store.fk_medicos_cidades">
+            <End Role="Cidades" EntitySet="Cidades" />
+            <End Role="Medicos" EntitySet="Medicos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_medicos_especialidades" Association="CadeMeuMedicoBDModel.Store.fk_medicos_especialidades">
+            <End Role="Especialidades" EntitySet="Especialidades" />
+            <End Role="Medicos" EntitySet="Medicos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BannersPublicitarios">
+          <Key>
+            <PropertyRef Name="IDBanner" />
+          </Key>
+          <Property Name="IDBanner" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TituloCampanha" Type="varchar" Nullable="false" MaxLength="60" />
+          <Property Name="BannerCampanha" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="LinkBanner" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Cidades">
+          <Key>
+            <PropertyRef Name="IDCidade" />
+          </Key>
+          <Property Name="IDCidade" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Especialidades">
+          <Key>
+            <PropertyRef Name="IDEspecialidade" />
+          </Key>
+          <Property Name="IDEspecialidade" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="varchar" Nullable="false" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="Medicos">
+          <Key>
+            <PropertyRef Name="IDMedico" />
+          </Key>
+          <Property Name="IDMedico" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CRM" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Nome" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="Endereco" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Bairro" Type="varchar" Nullable="false" MaxLength="60" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="AtendePorConvenio" Type="bit" Nullable="false" />
+          <Property Name="TemClinica" Type="bit" Nullable="false" />
+          <Property Name="WebsiteBlog" Type="varchar" MaxLength="80" />
+          <Property Name="IDCidade" Type="int" Nullable="false" />
+          <Property Name="IDEspecialidade" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="IDUsuario" />
+          </Key>
+          <Property Name="IDUsuario" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="Login" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Senha" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <Association Name="fk_medicos_cidades">
+          <End Role="Cidades" Type="CadeMeuMedicoBDModel.Store.Cidades" Multiplicity="1" />
+          <End Role="Medicos" Type="CadeMeuMedicoBDModel.Store.Medicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cidades">
+              <PropertyRef Name="IDCidade" />
+            </Principal>
+            <Dependent Role="Medicos">
+              <PropertyRef Name="IDCidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_medicos_especialidades">
+          <End Role="Especialidades" Type="CadeMeuMedicoBDModel.Store.Especialidades" Multiplicity="1" />
+          <End Role="Medicos" Type="CadeMeuMedicoBDModel.Store.Medicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especialidades">
+              <PropertyRef Name="IDEspecialidade" />
+            </Principal>
+            <Dependent Role="Medicos">
+              <PropertyRef Name="IDEspecialidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CadeMeuMedicoBDModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EntidadesCadeMeuMedicoBD" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Cidades" EntityType="CadeMeuMedicoBDModel.Cidade" />
+          <EntitySet Name="Especialidades" EntityType="CadeMeuMedicoBDModel.Especialidade" />
+          <EntitySet Name="Medicos" EntityType="CadeMeuMedicoBDModel.Medico" />
+          <EntitySet Name="Usuarios" EntityType="CadeMeuMedicoBDModel.Usuario" />
+          <AssociationSet Name="fk_medicos_cidades" Association="CadeMeuMedicoBDModel.fk_medicos_cidades">
+            <End Role="Cidade" EntitySet="Cidades" />
+            <End Role="Medico" EntitySet="Medicos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_medicos_especialidades" Association="CadeMeuMedicoBDModel.fk_medicos_especialidades">
+            <End Role="Especialidade" EntitySet="Especialidades" />
+            <End Role="Medico" EntitySet="Medicos" />
+          </AssociationSet>
+          <EntitySet Name="BannersPublicitarios" EntityType="CadeMeuMedicoBDModel.BannersPublicitario" />
+        </EntityContainer>
+        <EntityType Name="Cidade">
+          <Key>
+            <PropertyRef Name="IDCidade" />
+          </Key>
+          <Property Type="Int32" Name="IDCidade" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nome" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Medicos" Relationship="CadeMeuMedicoBDModel.fk_medicos_cidades" FromRole="Cidade" ToRole="Medico" />
+        </EntityType>
+        <EntityType Name="Especialidade">
+          <Key>
+            <PropertyRef Name="IDEspecialidade" />
+          </Key>
+          <Property Type="Int32" Name="IDEspecialidade" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nome" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Medicos" Relationship="CadeMeuMedicoBDModel.fk_medicos_especialidades" FromRole="Especialidade" ToRole="Medico" />
+        </EntityType>
+        <EntityType Name="Medico">
+          <Key>
+            <PropertyRef Name="IDMedico" />
+          </Key>
+          <Property Type="Int64" Name="IDMedico" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CRM" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Nome" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Endereco" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Bairro" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Email" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="AtendePorConvenio" Nullable="false" />
+          <Property Type="Boolean" Name="TemClinica" Nullable="false" />
+          <Property Type="String" Name="WebsiteBlog" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="IDCidade" Nullable="false" />
+          <Property Type="Int32" Name="IDEspecialidade" Nullable="false" />
+          <NavigationProperty Name="Cidade" Relationship="CadeMeuMedicoBDModel.fk_medicos_cidades" FromRole="Medico" ToRole="Cidade" />
+          <NavigationProperty Name="Especialidade" Relationship="CadeMeuMedicoBDModel.fk_medicos_especialidades" FromRole="Medico" ToRole="Especialidade" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IDUsuario" />
+          </Key>
+          <Property Type="Int64" Name="IDUsuario" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nome" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Login" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Senha" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="fk_medicos_cidades">
+          <End Type="CadeMeuMedicoBDModel.Cidade" Role="Cidade" Multiplicity="1" />
+          <End Type="CadeMeuMedicoBDModel.Medico" Role="Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cidade">
+              <PropertyRef Name="IDCidade" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="IDCidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_medicos_especialidades">
+          <End Type="CadeMeuMedicoBDModel.Especialidade" Role="Especialidade" Multiplicity="1" />
+          <End Type="CadeMeuMedicoBDModel.Medico" Role="Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especialidade">
+              <PropertyRef Name="IDEspecialidade" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="IDEspecialidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BannersPublicitario">
+          <Key>
+            <PropertyRef Name="IDBanner" />
+          </Key>
+          <Property Type="Int64" Name="IDBanner" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TituloCampanha" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BannerCampanha" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LinkBanner" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CadeMeuMedicoBDModelStoreContainer" CdmEntityContainer="EntidadesCadeMeuMedicoBD">
+          <EntitySetMapping Name="Cidades">
+            <EntityTypeMapping TypeName="CadeMeuMedicoBDModel.Cidade">
+              <MappingFragment StoreEntitySet="Cidades">
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="IDCidade" ColumnName="IDCidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Especialidades">
+            <EntityTypeMapping TypeName="CadeMeuMedicoBDModel.Especialidade">
+              <MappingFragment StoreEntitySet="Especialidades">
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="IDEspecialidade" ColumnName="IDEspecialidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicos">
+            <EntityTypeMapping TypeName="CadeMeuMedicoBDModel.Medico">
+              <MappingFragment StoreEntitySet="Medicos">
+                <ScalarProperty Name="IDEspecialidade" ColumnName="IDEspecialidade" />
+                <ScalarProperty Name="IDCidade" ColumnName="IDCidade" />
+                <ScalarProperty Name="WebsiteBlog" ColumnName="WebsiteBlog" />
+                <ScalarProperty Name="TemClinica" ColumnName="TemClinica" />
+                <ScalarProperty Name="AtendePorConvenio" ColumnName="AtendePorConvenio" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+                <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="CRM" ColumnName="CRM" />
+                <ScalarProperty Name="IDMedico" ColumnName="IDMedico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="CadeMeuMedicoBDModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BannersPublicitarios">
+            <EntityTypeMapping TypeName="CadeMeuMedicoBDModel.BannersPublicitario">
+              <MappingFragment StoreEntitySet="BannersPublicitarios">
+                <ScalarProperty Name="LinkBanner" ColumnName="LinkBanner" />
+                <ScalarProperty Name="BannerCampanha" ColumnName="BannerCampanha" />
+                <ScalarProperty Name="TituloCampanha" ColumnName="TituloCampanha" />
+                <ScalarProperty Name="IDBanner" ColumnName="IDBanner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

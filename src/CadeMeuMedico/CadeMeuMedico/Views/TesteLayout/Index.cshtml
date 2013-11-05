@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Teste de layout";
+    var Data = DateTime.Now.DayOfWeek;
+    string StringConcatenada = Data.ToString();
+}
+
+@if (StringConcatenada == "Friday") { 
+    <h2>Sexta-feira</h2>
+}
+else
+{
+    <h2>Outro dia qualquer da semana.</h2>
+}

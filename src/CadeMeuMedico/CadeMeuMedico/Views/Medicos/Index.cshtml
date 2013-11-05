@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CadeMeuMedico.Models.Medico>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Médicos</h2>
+
+<p>
+    @Html.ActionLink("Adicionar novo médico", "Adicionar", null, new {@class = "btn btn-primary"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            Cidade
+        </th>
+        <th>
+            Especialidade
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cidade.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Especialidade.Nome)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id=item.IDMedico }) |
+                @Html.ActionLink("Excluir", "Excluir", new { id=item.IDMedico }, new {@class="excluir"})
+            </td>
+        </tr>
+    }
+</table>
+
+@section Scripts{
+    <script>
+        $(function () {
+            var linhaAtual;
+            
+            $("#menuMedicos").addClass("active");
+
+            $(".excluir").on("click", function () {
+                if (confirm("Confirma a exclusão do médico?")) {
+                    var urlExclusao = $(this).attr("href");
+                    linhaAtual = $(this).closest("tr");
+
+                    $.ajax({
+                        url: urlExclusao,
+                        type: "POST"
+                    }).done(function (excluiu) {
+                        if (excluiu) {
+                            linhaAtual.remove();
+                        } else {
+                            alert("Ocorreu algum problema na exclusão do médico :(");
+                        }
+                    }).fail(function () {
+                        alert("Ocorreu algum erro :(");
+                    });
+                }
+
+                return false;
+            });
+        });
+
+    </script>
+}

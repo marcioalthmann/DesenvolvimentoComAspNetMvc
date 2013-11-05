@@ -1,0 +1,40 @@
+﻿@model CadeMeuMedico.Models.Pais
+
+@{
+    ViewBag.Title = "Adicionar";
+}
+
+<h2>Adicionar</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Pais</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nome)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nome)
+            @Html.ValidationMessageFor(model => model.Nome)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Sigla)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Sigla)
+            @Html.ValidationMessageFor(model => model.Sigla)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
