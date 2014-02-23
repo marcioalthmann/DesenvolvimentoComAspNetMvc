@@ -15,7 +15,7 @@ namespace CadeMeuMedico.Controllers
 
         public ActionResult Index()
         {
-            var medicos = db.Medicos.Include(m => m.Cidade).Include(m => m.Especialidade);
+            var medicos = db.Medicos.Include("Cidades").Include("Especialidades");
             return View(medicos);
         }
 
