@@ -25,10 +25,11 @@ namespace CadeMeuMedico.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Cidade> Cidades { get; set; }
-        public DbSet<Especialidade> Especialidades { get; set; }
-        public DbSet<Medico> Medicos { get; set; }
-        public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<BannersPublicitario> BannersPublicitarios { get; set; }
+        public DbSet<BannersPublicitarios> BannersPublicitarios { get; set; }
+        public DbSet<Cidades> Cidades { get; set; }
+        public DbSet<Especialidades> Especialidades { get; set; }
+        public DbSet<Medicos> Medicos { get; set; }
+        public DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public DbSet<Usuarios> Usuarios { get; set; }
     }
 }

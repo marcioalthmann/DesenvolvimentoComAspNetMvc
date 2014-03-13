@@ -24,7 +24,7 @@ namespace CadeMeuMedico.Controllers
         }
 
         [HttpPost]
-        public ActionResult Adicionar(Cidade cidade)
+        public ActionResult Adicionar(Cidades cidade)
         {
             if (ModelState.IsValid)
             {
@@ -38,13 +38,13 @@ namespace CadeMeuMedico.Controllers
 
         public ActionResult Editar(long id)
         {
-            Cidade cidade = db.Cidades.Find(id);
+            Cidades cidade = db.Cidades.Find(id);
 
             return View(cidade);
         }
 
         [HttpPost]
-        public ActionResult Editar(Cidade cidade)
+        public ActionResult Editar(Cidades cidade)
         {
             if (ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace CadeMeuMedico.Controllers
         {
             try
             {
-                Cidade cidade = db.Cidades.Find(id);
+                Cidades cidade = db.Cidades.Find(id);
                 db.Cidades.Remove(cidade);
                 db.SaveChanges();
                 return Boolean.TrueString;
