@@ -7,7 +7,7 @@ using System.Web;
 namespace CadeMeuMedico.Models
 {
     [MetadataType(typeof(UsuarioMetadado))]
-    public partial class Usuario
+    public partial class Usuarios
     { 
     
     }

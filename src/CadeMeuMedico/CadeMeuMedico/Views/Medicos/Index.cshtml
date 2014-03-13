@@ -1,7 +1,7 @@
-﻿@model IEnumerable<CadeMeuMedico.Models.Medico>
+﻿@model IEnumerable<CadeMeuMedico.Models.Medicos>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Médicos";
 }
 
 <h2>Médicos</h2>
@@ -29,10 +29,10 @@
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cidade.Nome)
+                @Html.DisplayFor(modelItem => item.IDCidade)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Especialidade.Nome)
+                @Html.DisplayFor(modelItem => item.IDEspecialidade)
             </td>
             <td>
                 @Html.ActionLink("Editar", "Editar", new { id=item.IDMedico }) |
