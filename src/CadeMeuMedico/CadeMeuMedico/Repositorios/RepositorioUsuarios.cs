@@ -17,15 +17,15 @@ namespace CadeMeuMedico.Repositorios
             {
                 using (EntidadesCadeMeuMedicoBD db = new EntidadesCadeMeuMedicoBD())
                 {
-                    var QueryAutenticaUsuarios = db.Usuarios.Where(x => x.Login == Login && x.Senha == SenhaCriptografada).SingleOrDefault();
+                    var queryAutenticaUsuarios = db.Usuarios.Where(x => x.Login == Login && x.Senha == SenhaCriptografada).SingleOrDefault();
 
-                    if (QueryAutenticaUsuarios == null)
+                    if (queryAutenticaUsuarios == null)
                     {
                         return false;
                     }
                     else
                     {
-                       RepositorioCookies.RegistraCookieAutenticacao(QueryAutenticaUsuarios.IDUsuario);
+                       RepositorioCookies.RegistraCookieAutenticacao(queryAutenticaUsuarios.IDUsuario);
                         return true;
                     }
                 }
@@ -42,8 +42,8 @@ namespace CadeMeuMedico.Repositorios
             {
                 using (EntidadesCadeMeuMedicoBD db = new EntidadesCadeMeuMedicoBD())
                 {
-                    var Usuario = db.Usuarios.Where(u => u.IDUsuario == IDUsuario).SingleOrDefault();
-                    return Usuario;
+                    var usuario = db.Usuarios.Where(u => u.IDUsuario == IDUsuario).SingleOrDefault();
+                    return usuario;
                 }
             }
             catch (Exception)
@@ -54,17 +54,17 @@ namespace CadeMeuMedico.Repositorios
 
         public static Usuario VerificaSeOUsuarioEstaLogado()
         {
-            var Usuario = HttpContext.Current.Request.Cookies["UserCookieAuthentication"];
-            if (Usuario == null)
+            var usuario = HttpContext.Current.Request.Cookies["UserCookieAuthentication"];
+            if (usuario == null)
             {
                 return null;
             }
             else
             {
-                long IDUsuario = Convert.ToInt64(RepositorioCriptografia.Descriptografar(Usuario.Values["IDUsuario"]));
+                long iDUsuario = Convert.ToInt64(RepositorioCriptografia.Descriptografar(Usuario.Values["IDUsuario"]));
 
-                var UsuarioRetornado = RecuperaUsuarioPorID(IDUsuario);
-                return UsuarioRetornado;
+                var usuarioRetornado = RecuperaUsuarioPorID(iDUsuario);
+                return usuarioRetornado;
 
             }
         }
