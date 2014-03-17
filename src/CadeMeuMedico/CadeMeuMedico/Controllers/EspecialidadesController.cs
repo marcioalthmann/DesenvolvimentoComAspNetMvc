@@ -24,7 +24,7 @@ namespace CadeMeuMedico.Controllers
         }
 
         [HttpPost]
-        public ActionResult Adicionar(Especialidades especialidade)
+        public ActionResult Adicionar(Especialidade especialidade)
         {
             if (ModelState.IsValid)
             {
@@ -38,13 +38,13 @@ namespace CadeMeuMedico.Controllers
 
         public ActionResult Editar(long id)
         {
-            Especialidades especialidade = db.Especialidades.Find(id);
+            Especialidade especialidade = db.Especialidades.Find(id);
 
             return View(especialidade);
         }
 
         [HttpPost]
-        public ActionResult Editar(Especialidades especialidade)
+        public ActionResult Editar(Especialidade especialidade)
         {
             if (ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace CadeMeuMedico.Controllers
         {
             try
             {
-                Especialidades especialidade = db.Especialidades.Find(id);
+                Especialidade especialidade = db.Especialidades.Find(id);
                 db.Especialidades.Remove(especialidade);
                 db.SaveChanges();
                 return Boolean.TrueString;

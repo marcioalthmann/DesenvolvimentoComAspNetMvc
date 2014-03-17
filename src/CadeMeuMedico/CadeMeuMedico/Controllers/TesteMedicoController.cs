@@ -18,7 +18,7 @@ namespace CadeMeuMedico.Controllers
 
         public ActionResult Index()
         {
-            var medicos = db.Medicos.Include("Cidades").Include("Especialidades");
+            var medicos = db.Medicos.Include(m => m.Cidade).Include(m => m.Especialidade);
             return View(medicos.ToList());
         }
 
@@ -27,7 +27,7 @@ namespace CadeMeuMedico.Controllers
 
         public ActionResult Details(long id = 0)
         {
-            Medicos medico = db.Medicos.Find(id);
+            Medico medico = db.Medicos.Find(id);
             if (medico == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace CadeMeuMedico.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Medicos medico)
+        public ActionResult Create(Medico medico)
         {
             if (ModelState.IsValid)
             {
@@ -69,7 +69,7 @@ namespace CadeMeuMedico.Controllers
 
         public ActionResult Edit(long id = 0)
         {
-            Medicos medico = db.Medicos.Find(id);
+            Medico medico = db.Medicos.Find(id);
             if (medico == null)
             {
                 return HttpNotFound();
@@ -84,7 +84,7 @@ namespace CadeMeuMedico.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Medicos medico)
+        public ActionResult Edit(Medico medico)
         {
             if (ModelState.IsValid)
             {
@@ -102,7 +102,7 @@ namespace CadeMeuMedico.Controllers
 
         public ActionResult Delete(long id = 0)
         {
-            Medicos medico = db.Medicos.Find(id);
+            Medico medico = db.Medicos.Find(id);
             if (medico == null)
             {
                 return HttpNotFound();
@@ -117,7 +117,7 @@ namespace CadeMeuMedico.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            Medicos medico = db.Medicos.Find(id);
+            Medico medico = db.Medicos.Find(id);
             db.Medicos.Remove(medico);
             db.SaveChanges();
             return RedirectToAction("Index");

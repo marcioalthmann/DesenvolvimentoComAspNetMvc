@@ -4,15 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8429b55087a34b889369279a7e3c2d7f" Name="Diagram1">
-        <EntityTypeShape EntityType="CadeMeuMedico.Models.BannersPublicitarios" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CadeMeuMedico.Models.Cidades" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="CadeMeuMedico.Models.Especialidades" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="CadeMeuMedico.Models.Medicos" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="CadeMeuMedico.Models.sysdiagrams" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CadeMeuMedico.Models.Usuarios" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
-        <AssociationConnector Association="CadeMeuMedico.Models.fk_medicos_cidades" ManuallyRouted="false" />
-        <AssociationConnector Association="CadeMeuMedico.Models.fk_medicos_especialidades" ManuallyRouted="false" />
+      <Diagram DiagramId="77314496613b4fd68576427e72760da6" Name="Diagram1">
+        <EntityTypeShape EntityType="CadeMeuMedicoBDModel.Cidade" Width="1.5" PointX="2.875" PointY="13.75" />
+        <EntityTypeShape EntityType="CadeMeuMedicoBDModel.Especialidade" Width="1.5" PointX="2.875" PointY="11.875" />
+        <EntityTypeShape EntityType="CadeMeuMedicoBDModel.Medico" Width="1.5" PointX="5" PointY="11.875" />
+        <EntityTypeShape EntityType="CadeMeuMedicoBDModel.Usuario" Width="1.5" PointX="7.125" PointY="11.875" />
+        <AssociationConnector Association="CadeMeuMedicoBDModel.fk_medicos_cidades" />
+        <AssociationConnector Association="CadeMeuMedicoBDModel.fk_medicos_especialidades" />
+        <EntityTypeShape EntityType="CadeMeuMedicoBDModel.BannersPublicitario" Width="1.5" PointX="8.5859244263665389" PointY="5.6414628800197795" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

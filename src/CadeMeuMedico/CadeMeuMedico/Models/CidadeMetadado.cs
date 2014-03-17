@@ -7,7 +7,7 @@ using System.Web;
 namespace CadeMeuMedico.Models
 {
     [MetadataType(typeof(CidadeMetadado))]
-    public partial class Cidades
+    public partial class Cidade
     { 
     
     }

@@ -36,14 +36,14 @@ namespace CadeMeuMedico.Repositorios
             }
         }
 
-        public static Usuarios RecuperaUsuarioPorID(long IDUsuario)
+        public static Usuario RecuperaUsuarioPorID(long IDUsuario)
         {
             try
             {
                 using (EntidadesCadeMeuMedicoBD db = new EntidadesCadeMeuMedicoBD())
                 {
-                    var usuario = db.Usuarios.Where(u => u.IDUsuario == IDUsuario).SingleOrDefault();
-                    return usuario;
+                    var Usuario = db.Usuarios.Where(u => u.IDUsuario == IDUsuario).SingleOrDefault();
+                    return Usuario;
                 }
             }
             catch (Exception)
@@ -52,16 +52,16 @@ namespace CadeMeuMedico.Repositorios
             }
         }
 
-        public static Usuarios VerificaSeOUsuarioEstaLogado()
+        public static Usuario VerificaSeOUsuarioEstaLogado()
         {
-            var usuario = HttpContext.Current.Request.Cookies["UserCookieAuthentication"];
-            if (usuario == null)
+            var Usuario = HttpContext.Current.Request.Cookies["UserCookieAuthentication"];
+            if (Usuario == null)
             {
                 return null;
             }
             else
             {
-                long IDUsuario = Convert.ToInt64(RepositorioCriptografia.Descriptografar(usuario.Values["IDUsuario"]));
+                long IDUsuario = Convert.ToInt64(RepositorioCriptografia.Descriptografar(Usuario.Values["IDUsuario"]));
 
                 var UsuarioRetornado = RecuperaUsuarioPorID(IDUsuario);
                 return UsuarioRetornado;
