@@ -19,7 +19,7 @@ namespace CadeMeuMedico.Models
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "Obrigatório informar o Login")]
-        [StringLength(30, ErrorMessage = "O Login deve possuir no máximo 80 caracteres")]
+        [StringLength(30, ErrorMessage = "O Login deve possuir no máximo 30 caracteres")]
         public string Login { get; set; }
 
         [Required(ErrorMessage = "Obrigatório informar a Senha")]
@@ -27,7 +27,7 @@ namespace CadeMeuMedico.Models
         public string Senha { get; set; }
 
         [Required(ErrorMessage = "Obrigatório informar o E-mail")]
-        [StringLength(100, ErrorMessage = "O E-mail deve possuir no máximo 80 caracteres")]
+        [StringLength(100, ErrorMessage = "O E-mail deve possuir no máximo 100 caracteres")]
         public string Email { get; set; }
     }
 }
